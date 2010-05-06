@@ -1891,7 +1891,13 @@ void Cmd_CallVote_f( gentity_t *ent )
   if( !Q_stricmp( arg1, "kick" ) )
   {
     gentity_t *bot;
-
+    bot = &g_entities[ clientNum ];
+    if(bot->client->sess.invisible == qtrue)
+    {
+      trap_SendServerCommand( ent-g_entities,
+        "print \"callvote: invalid player\n\"" );
+      return;
+    }
     if( G_admin_permission( &g_entities[ clientNum ], ADMF_IMMUNITY ) )
     {
       trap_SendServerCommand( ent-g_entities,
@@ -1901,7 +1907,6 @@ void Cmd_CallVote_f( gentity_t *ent )
       return;
     }
 
-    bot = &g_entities[ clientNum ];
     if( ( bot->r.svFlags & SVF_BOT ) )
     {
       trap_SendServerCommand( ent-g_entities,
