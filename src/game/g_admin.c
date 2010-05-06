@@ -2592,6 +2592,11 @@ qboolean G_admin_kick( gentity_t *ent, int skiparg )
         " level than you\n" );
     return qfalse;
   }
+  if( ( vic->r.svFlags & SVF_BOT ) )
+  { 
+    ADMP( "^3!kick: ^7sorry, but you can't kick bots, use !bot del (name) instead\n" );
+    return qfalse;
+  }
   admin_create_ban( ent,
     vic->client->pers.netname,
     vic->client->pers.guid,

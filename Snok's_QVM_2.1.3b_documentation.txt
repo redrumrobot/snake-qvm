@@ -1,0 +1,222 @@
+Documentation of the Snok's QVM V2.1.3b
+
+////New Features\\\\
+
+*Easier Restarts: now you don't have to type the whole thing to restart with options, only type !restart stl for switchteamslock, !restart ktl for keepteamslock, !restart kt for keepteams and !restart st for switchteams, easy, isnt it?
+
+*Both Teams Lock: This was made to avoid the annoying players joining to the team which is not locked, also to only use 1 cmd to lock both teams, use !lock e to lock both teams and !unlock e to unlock both teams
+
+*Names Log: Logs the name, the IP and the guid of all the players who enter into the server (It was made to keep a track of the aliases), Managed by the g_NamesFile cvar
+
+*Abusable CMDs: I've groupped the abusable CMDs and made a cvar (g_noAbusableCMDs), when enabled(1) it will disable all the abusable cmds(cookie, drop, slap, abps, hbps, astage, hstage, bps, stage).
+
+*No Register Levels: This was made to keep a track of your admins, when their level is between the g_minNoRegisterLevel and the g_maxNoRegister level, it wont let they register their new aliases
+(Example: when g_NoRegisterLevels is 1, g_minNoRegisterLevel is 2 and g_maxNoRegister level is 6, the admins that are a level between 2 and 6 wont be able to register
+
+*Report files: !report command allows your players to report an special situation on the server, comes along with the current !namelog (Originally wrote by Amanieu and/or Benmachine?), managed by the cvars g_reportFile and g_reportLimit
+
+*Invisible: Now admins are capable of being invisible to the players and other admins, I used the patch made by Citrux, Slacker and Tori but fixed a lot of bugs that could notice the players of the real status of the admin, however if you use admin as invisible they will notice of you easily (or think you are "hacking" the server :P). It still its kinda buggy but I'll be fixing it with the time, Its safe to use.
+
+*Admin Reports: It streams all the commands used by all the admins to the adminchat, it was made to spot the admin abusers on-the-fly, it reports all the commands except for: adminlog, admintest, listmaps, help, info, listadmins, listplayers, rotation, drop, specme, cookie, fortunecookie, fireworks, invisible, namelog, showbans and time, also it won't report the commands usage if the admin is invisible.
+
+*Auto TK warn and kick: This feature is broken, it's supposed to auto warn and autokick the teamkillers after a number of tks but for some reason it haven't been working properly so I 'disabled' it, I'll give news when I fix it or something, its managed by the cvars g_maxTKs and g_maxTKtime, default are disabled because of broken, DON'T DARE YOU TO SWITCH IT, IT COULD KICK YOU FROM 1 TK.
+
+*Multi Char Flags: Multi character flags support, also added .NOVOTE and .NOCHAT when you give a player (or a whole level if you are mean :P) these flags they can't call votes or chat (while having the flag) respectively //Multichar flags patch was made by Rezyn
+
+*Website: the website cvar was made with the objective of tell the players where to do some things, a PoC of this is !amIadmin which tells you if you are an admin, and if not tells you where to apply, setting the g_website will let you make use of that cvar with different usages. It's still under development but you should setup already g_website so you won't have any trouble in the future.
+
+*Stage and round commands: I added the next CMDs with the point of helping the clans to train or just have fun: astage, hstage, stage, abps, hbps, bps; these are usable only if the round is DEVMAP or g_noAbusableCMDs is 0
+
+////New Cvars(Some of them are from Rezyn):\\\\
+
+* g_DoWarmup: Enables or disables the Warm up time, Default: 1 //Rezyn
+* g_warmup: Set the number of seconds to warm up at the beggining of the round, Default: 10 //Rezyn
+* g_WarmupMode: sets the warm up mode (1: Everyone wats on specs, 2: The players can join a team but not play), Default: 1 //Rezyn
+* g_NamesFile: Sets the file name of the Names Log, set to "" to disable the names logging, Default: names.txt
+* g_FireWorks: Enables or disables the ability to use !fireworks, Default: 1
+* g_Bubbles: Enables or disables the ability to use !bubblz Default: 1
+* g_NoRegisterLevels: Enables or disables the no register levels (look at features), Default: 0
+* g_minNoRegisterLevel: sets the min level that can't !register when g_NoRegisterLevels is 1, Default: 2
+* g_maxNoRegisterLevel: sets the max level that can't !register when g_NoRegisterLevels is 1, Default: 6
+* g_reportFile: Sets the file name where the reports are stored, set to "" to disable the reports, Default: reports.txt
+* g_reportLimit: Sets the max times a player can use !report on a round, Default: 2
+* g_adminReports: Enable or disable the admin usage reports on the admin chat, Default: 0
+* g_maxTKs: set the max number of TKs in the determinated time by g_maxTKtime before a kick. Default: 0 //This feature is broken, I'd not suggest changing the value instead that you want to get kicked
+* g_maxTKtime: It's the time to log the TKs for the Auto TK Warn and kick. Default 0 //This feature is broken, I'd not suggest changing this value instead that you want to get kicked
+* g_website: Used to set the clan/server website, Default: "http://www.tremulous.net"
+* g_noAbusableCMDs: Enables or disables the abusable cmds. (cookie, drop, slap, abps, hbps, astage, hstage, bps, stage), Default: 1
+
+////FlagList: This is a complete list of all the QVM flags and commands\\\\
+
+
+Ability flags:
+
+  ACTIVITY				inactivity rules do not apply
+  ADMINCHAT				can see and use admin chat
+  BANIMMUNITY			immune from IP bans
+  CANPERMBAN			can permanently ban players
+  DBUILDER				permanent designated builder
+  FORCETEAMCHANGE		team balance rules do not apply
+  INCOGNITO				does not show as admin in !listplayers
+  IMMUNITY				cannot be vote kicked or muted
+  IMMUTABLE				admin commands cannot be used on them
+  NOCENSORFLOOD		no flood protection
+  NOVOTELIMIT			vote limitations do not apply
+  SEESFULLLISTPLAYERS		sees all info in !listplayers
+  SPECALLCHAT			can see team chat as spectator
+  STEALTH				uses admin stealth
+  TEAMCHANGEFREE		tkeeps credits on team switch
+  TEAMCHATCMD			can run commands from team chat
+  UNACCOUNTABLE		does not need to specify reason for kick/ban
+  .NOCHAT				can not talk
+  .NOVOTE				can not call votes
+
+Command flags:
+
+  Q			abps: Sets the alien build points to the specified ones.
+  Q			hbps: Sets the human build points to the specified ones.
+  Q			bps: Sets the both teams build points to the specified ones.
+  Q			astage: Sets the alien stage to the specified one.
+  Q			hstage: Sets the human stage to the specified one.
+  Q			stage: Sets the both teams stage to the specified one.
+  A			adminlog: Checks the current admin log to see potential abuses
+  a			admintest:display your current admin level
+  h			amIadmin: Tells if you are an admin or not and if you are not tells you to apply in the website defined in g_website
+  h			fortunecookie: Gets a random fortune cookie.
+  h			help: display commands available to you or help on a specific command
+  h			report: Allows the player to report any special issue in the server
+  h			specme: Puts you on spectator
+  Y			cookie: If g_noAbusableCMDs is 0 sends a cookie to a player with an optional reason
+  y			allready: makes everyone ready in intermission
+  b			adjustban:  change the length or reason of a ban. time is specified as numbers followed by units w (weeks) d (days) h (hours) or m (minutes) or seconds if no units are specified
+  b			ban: ban a player by IP and GUID with an optional expiration time and reason.
+  b			unban: unbans a player specified by the slot as seen in showbans
+  X			bubblz: if g_Bubbles is 1 adds a trace of bubbles to the specified player
+  X			drop: if g_noAbusableCMDs is 0 disconnects a player with an optional message
+  X			fireworks: if g_FireWorks is 1 shows the ending fireworks on ATCS
+  U			buildlog: display a list of recent builds and deconstructs
+  c			cancelvote: cancel a vote taking place
+  Z			cp: display a CP message to users, optionally specifying team(s) to send to
+  ?			demo: Disables adminchat
+  d			allowbuild: restore a players ability to build
+  d			allowweapon: restore a players ability to use a weapon
+  d			denybuild: take away a players ability to build
+  d			denyweapon: takes away a players ability to use a weapon
+  g			designate: give the player designated builder privileges
+  g			undesignate: revoke designated builder privileges
+  L			devmap: load a map with cheats (and optionally force layout)
+  L			layoutsave: save a map layout
+  f			flag: Gives a flag to a player, with - denies a flag to a player
+  f			flaglist: Shows all the flags list
+  f			unflag: Removes a flag from a player
+  H			info: read the servers information files
+  I			immunity: Gives ban immunity to a player (+ to give - to remove)
+  T			invisible: Switchs an admin to spectators and simulate a disconnection, useful to check out the admins work, or hackers
+  k			kick: Kicks a player from the server
+  u			Lm1: Gives Level -1 to a L0 or L1 player
+  I			L1: Gives Level 1 to a level 0 or -1 player
+  I			L0: Gives Level 0 to a level 1 or -1 player
+  D			listadmins: Shows the current list of admins
+  D			seen: Tells when was the last time an admin was seen
+  j			listlayouts: Shows the layouts on the current map
+  j			listmaps: Shows the current list of maps on the server
+  j			rotation: Shows the current rotation
+  i			listplayers: Shows a list of the connected players
+  K			lock: Locks a team or both teams(usage: "!lock a" to lock aliens, "!lock h" to lock humans and "!lock e" to lock both teams.
+  K			unlock: unlocks a team or both teams (usage: "!unlock a" to unlock aliens, "!lunock h" to unlock humans and "!unlock e" to unlock both teams.
+  M			map: Changes the map to the specified one
+  o			maplog: Shows the map log.
+  m			mute: mutes a player
+  m			unmute: unmutes a player
+  e			namelog: Shows the namelog of the players, along with their IP, client number and GUID
+  n			nextmap: changes to the next map
+  V			passvote: Pass a vote going on
+  S			pause: Pauses the game or a player
+  S			unpause: Unpauses the game or a player
+  p			putteam: Puts a player on the specified team
+  G			readconfig: Reads the admin.dat config
+  R			register: Register your name with the server
+  N			rename: Renames a player to the specified name
+  r			restart: Restarts the current map
+  v			revert: Reverts one or multiple building events
+  s			setlevel: Gives a specified level to a player
+  B			showbans: Shows the current list of bans
+  x			slap: If G_noAbusableCMDs is 0 slaps a player with an optional value (default value is 5)
+  P			spec999: Moves all the 999 pingers to spec
+  E			subnetban: Bans a whole subnet (BE CAUTELOUS WITH THIS CMD, YOU CAN BAN WHOLE TURKEY.)
+  J			suspendban: Suspends an specified ban for a specified time
+  C			time: shows the server time
+  t			tklog: Shows the round tklog
+  w			warn: Warns a player with an optional reason.
+
+
+////Admin.dat Example\\\\
+
+This is an example of the admin.dat, this is the theme of the BB server.
+
+/*********************************************************************************/
+
+[level]
+level   = -1
+name    = ^4~ # ^7Unwanted Player ^4#
+flags   = h C H
+
+[level]
+level   = 0
+name    = ^4~ # ^7Unregistered Player ^4#
+flags   = TEAMCHANGEFREE TEAMCHATCMD a H i j o R h C
+
+[level]
+level   = 1
+name    = ^4~ # ^7Registered Player^4 # ~
+flags   = TEAMCHANGEFREE TEAMCHATCMD a H i j o R h C Y
+
+[level]
+level   = 2
+name    = ^4~ # ^7Server Small Moderator#
+flags   = IMMUNITY TEAMCHANGEFREE TEAMCHATCMD a H i j o R h C m e y l Y P
+
+[level]
+level   = 3
+name    = ^4~ # ^7Server Moderator^4 # ~
+flags   = IMMUNITY TEAMCHANGEFREE UNACCOUNTABLE TEAMCHATCMD ADMINCHAT a H i j o R h C m e y l k p v S U t w d Y u g P
+
+[level]
+level   = 4
+name    = ^4~ # ^7Server Small Adminr^4 #
+flags   = IMMUNITY TEAMCHANGEFREE UNACCOUNTABLE TEAMCHATCMD ADMINCHAT SEESFULLLISTPLAYERS SPECALLCHAT a H i j o R h C m e y l k p v S U t w b B V c N d r Y u g P
+
+[level]
+level   = 5
+name    = ^4~ #^7 Server Admin^4 # ~
+flags   = IMMUNITY TEAMCHANGEFREE UNACCOUNTABLE TEAMCHATCMD ADMINCHAT SEESFULLLISTPLAYERS ACTIVITY CANPERMBAN BANIMMUNITY SPECALLCHAT a H i j o R h C m e y l k p v S U t w b B V c N A d I D K M n r J E Y u g P
+
+[level]
+level   = 6
+name    = ^4~ #^7 Server Owner^4 # ~
+flags   = ALLFLAGS -INCOGNITO
+
+/*********************************************************************************/
+
+Remember that ALLFLAGS include ALL the flags listed.
+
+
+
+////Changelog\\\\
+
+*- 06-05-2010 - Back to the work on the QVM, fixed some bugs on the !invisible command, also restricted the admins from being able to !kick a bot, updated to V2.1.3b
+*- 18-02-2010 - Fixed the !help bug and added colored Win message (that now shows a CP too), added an admin.dat example on the docs.
+*- <18-02-2010 - I don't have a changelog below this point, but its the most features of the QVM.
+
+
+Made by Snake(Christian D.), this document is licensed under the GNU/GPL licence 3.0 and so is the QVM.
+
+
+This is a fast documentation, I still have to write LOTS of features, I'll do it when I get the time/Remember it/get unlazy.
+
+Also, added warmup because a lot of people was getting pissed about it :P Soon I'll add all the other cvars and features.
+
+Thanks for your interest on my QVM. -Snake
+
+email: raven@ideashock.net
+Project website: http://code.google.com/p/snake-qvm/

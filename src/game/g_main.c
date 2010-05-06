@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "g_local.h"
 
 #define QVM_NAME       "Snok's QVM"
-#define QVM_VERSIONNUM      "2.1.2b"
+#define QVM_VERSIONNUM      "2.1.3b"
 
 level_locals_t  level;
 
