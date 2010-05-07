@@ -1566,6 +1566,7 @@ extern  vmCvar_t  g_msgTime;
 extern  vmCvar_t  g_welcomeMsg;
 extern  vmCvar_t  g_welcomeMsgTime;
 extern  vmCvar_t  g_website;
+extern  vmCvar_t  g_deconBanTime;
 
 extern  vmCvar_t  g_buildLogMaxLength;
 
