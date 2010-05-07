@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "g_local.h"
 
 #define QVM_NAME       "Snok's QVM"
-#define QVM_VERSIONNUM      "2.1.3b"
+#define QVM_VERSIONNUM      "2.1.4b"
 
 level_locals_t  level;
 
@@ -252,6 +252,7 @@ vmCvar_t  g_msgTime;
 vmCvar_t  g_welcomeMsg;
 vmCvar_t  g_welcomeMsgTime;
 vmCvar_t  g_website;
+vmCvar_t  g_deconBanTime;
 
 static cvarTable_t   gameCvarTable[ ] =
 {
@@ -483,6 +484,7 @@ static cvarTable_t   gameCvarTable[ ] =
   { &g_welcomeMsg, "g_welcomeMsg", "", CVAR_ARCHIVE, 0, qfalse  },
   { &g_welcomeMsgTime, "g_welcomeMsgTime", "0", CVAR_ARCHIVE, 0, qfalse  },
   { &g_website, "g_website", "http://www.tremulous.net/", CVAR_ARCHIVE, 0, qfalse  },
+  { &g_deconBanTime, "g_deconBanTime", "1w", CVAR_ARCHIVE, 0, qfalse  },
   
   { &g_rankings, "g_rankings", "0", 0, 0, qfalse  },
   { &g_reportFile, "g_reportFile", "reports.txt", CVAR_ARCHIVE, 0, qfalse  },
