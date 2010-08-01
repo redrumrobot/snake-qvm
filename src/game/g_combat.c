@@ -806,86 +806,179 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
       else if( meansOfDeath == MOD_LCANNON )
       {
 	random_integer = rand() % 5 + 0;
-	switch(random_integer)
+	if(attacker == self)
 	{
-		case 1:
-			trap_SendServerCommand( -1, va( "print \"%s^7 felt the power of %s^7's sun^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 2:
-			trap_SendServerCommand( -1, va( "print \"%s^7 saw %s^7's pretty lights^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 3:
-			trap_SendServerCommand( -1, va( "print \"%s^7 was disintegrated by %s^7's Lucifer cannon^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 4:
-			trap_SendServerCommand( -1, va( "print \"%s^7 was annihilated by %s^7's superior weapons^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		default:
-			trap_SendServerCommand( -1, va( "print \"%s^7 sucked the whole ball from the %s^7's lucifer cannon^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
+		switch(random_integer)
+		{
+			case 1:
+				trap_SendServerCommand( -1, va( "print \"%s^7 pointed the wrong end at the enemy^7\n\"", self->client->pers.netname ) );
+				break;
+			case 2:
+				trap_SendServerCommand( -1, va( "print \"%s^7 saw the light^7\n\"", self->client->pers.netname ) );
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 over-SHOOPed^7\n\"", self->client->pers.netname ) );
+				break;
+			case 4:
+				trap_SendServerCommand( -1, va( "print \"%s^7 made a little mistake with his superior weaponry^7\n\"", self->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7 made a messy discharge^7\n\"", self->client->pers.netname ) );
+				break;
+		}
+	}
+	else{
+
+		switch(random_integer)
+		{
+			case 1:
+				trap_SendServerCommand( -1, va( "print \"%s^7 felt the power of %s^7's sun^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 2:
+				trap_SendServerCommand( -1, va( "print \"%s^7 saw %s^7's pretty lights^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 was disintegrated by %s^7's Lucifer cannon^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 4:
+				trap_SendServerCommand( -1, va( "print \"%s^7 was annihilated by %s^7's superior weapons^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7 sucked the whole ball from the %s^7's lucifer cannon^7\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+		}
 	}
        }
       else if( meansOfDeath == MOD_LCANNON_SPLASH )
       {
 	random_integer = rand() % 4 + 0;
-	switch(random_integer)
+	if(attacker == self)
 	{
-		case 1:
-			trap_SendServerCommand( -1, va( "print \"%s^7 couln't handle the power of %s^7's luci\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 2:
+		switch(random_integer)
+		{
+			case 1:
+				trap_SendServerCommand( -1, va( "print \"%s^7 pointed the wrong end at the enemy^7\n\"", self->client->pers.netname ) );
+				break;
+			case 2:
+				trap_SendServerCommand( -1, va( "print \"%s^7 saw the light^7\n\"", self->client->pers.netname ) );
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 over-SHOOPed^7\n\"", self->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7 made a little mistake with his superior weaponry^7\n\"", self->client->pers.netname ) );
+				break;
+		}
+	}
+	else{
+		switch(random_integer)
+		{
+			case 1:
+				trap_SendServerCommand( -1, va( "print \"%s^7 couln't handle the power of %s^7's luci\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 2:
 			trap_SendServerCommand( -1, va( "print \"%s^7 was irradiated by %s^7's fallout\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 3:
-			trap_SendServerCommand( -1, va( "print \"%s^7 dodged total annihilation by %s^7 but was partially annihilated instead\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		default:
-			trap_SendServerCommand( -1, va( "print \"%s^7's luciball missed but still irritated %s^7 to death\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
-			break;
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 dodged total annihilation by %s^7 but was partially annihilated instead\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7's luciball missed but still irritated %s^7 to death\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
+				break;
+		}
 	}
        }
       else if( meansOfDeath == MOD_FLAMER )
       {
 	random_integer = rand() % 5 + 0;
-	switch(random_integer)
+	if(attacker == self)
 	{
-		case 1:
-			trap_SendServerCommand( -1, va( "print \"%s^7 was grilled to perfection by %s^7's flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 2:
-			trap_SendServerCommand( -1, va( "print \"%s^7 was instantly tanned by %s^7's Flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 3:
-			trap_SendServerCommand( -1, va( "print \"%s^7 became crispy by %s^7's flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 4:
-			trap_SendServerCommand( -1, va( "print \"%s^7's flamethrower was too hot for %s^7\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
-			break;
-		default:
-			trap_SendServerCommand( -1, va( "print \"%s^7 is going to have a barbecue and %s^7 is not invited\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
-			break;
+		switch(random_integer)
+		{
+			case 1:
+				trap_SendServerCommand( -1, va( "print \"%s^7 wasn't hot enough to suit himself^7\n\"", self->client->pers.netname ) );
+				break;
+			case 2:
+				trap_SendServerCommand( -1, va( "print \"%s^7 wasn't prepared for high temperatures^7\n\"", self->client->pers.netname ) );
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 played with fire^7\n\"", self->client->pers.netname ) );
+				break;
+			case 4:
+				trap_SendServerCommand( -1, va( "print \"%s^7 started the barbecue with the wrong match^7\n\"", self->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7 combusted himself^7\n\"", self->client->pers.netname ) );
+				break;
+		}
+	}
+	else{
+		switch(random_integer)
+		{
+			case 1:
+				trap_SendServerCommand( -1, va( "print \"%s^7 was grilled to perfection by %s^7's flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 2:
+				trap_SendServerCommand( -1, va( "print \"%s^7 was instantly tanned by %s^7's Flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 became crispy by %s^7's flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 4:
+				trap_SendServerCommand( -1, va( "print \"%s^7's flamethrower was too hot for %s^7\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7 is going to have a barbecue and %s^7 is not invited\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
+				break;
+		}
 	}
        }
       else if( meansOfDeath == MOD_FLAMER_SPLASH )
       {
 	random_integer = rand() % 6 + 0;
-	switch(random_integer)
+	if(attacker == self)
 	{
+		switch(random_integer)
+		{
+			case 1:
+				trap_SendServerCommand( -1, va( "print \"%s^7 wasn't hot enough to suit himself^7\n\"", self->client->pers.netname ) );
+				break;
+			case 2:
+				trap_SendServerCommand( -1, va( "print \"%s^7 wasn't prepared for high temperatures^7\n\"", self->client->pers.netname ) );
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 played with fire^7\n\"", self->client->pers.netname ) );
+				break;
+			case 4:
+				trap_SendServerCommand( -1, va( "print \"%s^7 started the barbecue with the wrong match^7\n\"", self->client->pers.netname ) );
+				break;
+			case 5:
+				trap_SendServerCommand( -1, va( "print \"%s^7 had a spark, but it got to his head^7\n\"", self->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7 combusted himself^7\n\"", self->client->pers.netname ) );
+				break;
+		}
+	}
+	else{
+		switch(random_integer)
+		{
 		case 1:
-			trap_SendServerCommand( -1, va( "print \"%s^7 just sitted in the grill of %s^7 and became a tasty meal.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 2:
-			trap_SendServerCommand( -1, va( "print \"%s^7 was instantly tanned by %s^7's Flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 3:
-			trap_SendServerCommand( -1, va( "print \"%s^7 became crispy by %s^7's flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 4:
-			trap_SendServerCommand( -1, va( "print \"%s^7's flamethrower was too hot for %s^7\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
-			break;
-		default:
-			trap_SendServerCommand( -1, va( "print \"%s^7 got a little too close to %s^7's fire.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
+				trap_SendServerCommand( -1, va( "print \"%s^7 just sitted in the grill of %s^7 and became a tasty meal.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 2:
+				trap_SendServerCommand( -1, va( "print \"%s^7 was instantly tanned by %s^7's Flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 became crispy by %s^7's flamer\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 4:
+				trap_SendServerCommand( -1, va( "print \"%s^7's flamethrower was too hot for %s^7\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7 got a little too close to %s^7's fire.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+		}
 	}
        }
       else if( meansOfDeath == MOD_LASGUN )
@@ -903,7 +996,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 			trap_SendServerCommand( -1, va( "print \"%s^7 forgot to hide from %s^7's lasgun\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
 			break;
 		case 4:
-			trap_SendServerCommand( -1, va( "print \"%s^7 kept  %s^7 under lasgun preasure\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
+			trap_SendServerCommand( -1, va( "print \"%s^7 kept  %s^7 under lasgun pressure\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
 			break;
 		default:
 			trap_SendServerCommand( -1, va( "print \"%s^7's lasgun can kill as %s^7 just found out\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
@@ -912,21 +1005,45 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
        }
       else if( meansOfDeath == MOD_GRENADE )
       {
-	random_integer = rand() % 4 + 0;
-	switch(random_integer)
+	if(attacker == self)
 	{
-		case 1:
-			trap_SendServerCommand( -1, va( "print \"%s^7 was blown to pieces by %s^7's shiny nade.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 2:
-			trap_SendServerCommand( -1, va( "print \"%s^7 was filled with %s^7's nade shrapnel.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		case 3:
-			trap_SendServerCommand( -1, va( "print \"%s^7 should have heard %s^7's grenade bouncing.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
-			break;
-		default:
-			trap_SendServerCommand( -1, va( "print \"%s^7's grenade just burst with joy, %s^7 just burst.\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
-			break;
+		random_integer = rand() % 5 + 0;
+		switch(random_integer)
+		{
+			case 1:
+				trap_SendServerCommand( -1, va( "print \"%s^7 tried to put the pin back in^7\n\"", self->client->pers.netname ) );
+				break;
+			case 2:
+				trap_SendServerCommand( -1, va( "print \"%s^7 accidentally pulled the pin early^7\n\"", self->client->pers.netname ) );
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 failed to do a nadejump^7\n\"", self->client->pers.netname ) );
+				break;
+			case 4:
+				trap_SendServerCommand( -1, va( "print \"%s^7 was holding a thermal detonator!^7\n\"", self->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7 just tried to become a bird, maybe he can now in the afterlife^7\n\"", self->client->pers.netname ) );
+				break;
+		}
+	}
+	else{
+		random_integer = rand() % 5 + 0;
+		switch(random_integer)
+		{
+			case 1:
+				trap_SendServerCommand( -1, va( "print \"%s^7 was blown to pieces by %s^7's shiny nade.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 2:
+				trap_SendServerCommand( -1, va( "print \"%s^7 was filled with %s^7's nade shrapnel.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			case 3:
+				trap_SendServerCommand( -1, va( "print \"%s^7 should have heard %s^7's grenade bouncing.\n\"", self->client->pers.netname, attacker->client->pers.netname ) );
+				break;
+			default:
+				trap_SendServerCommand( -1, va( "print \"%s^7's grenade just burst with joy, %s^7 just burst.\n\"", attacker->client->pers.netname, self->client->pers.netname ) );
+				break;
+		}
 	}
        }
       else if( meansOfDeath == MOD_POISON )

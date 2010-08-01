@@ -1,4 +1,4 @@
-Documentation of the Snok's QVM V2.1.4b
+Documentation of the Snok's QVM V2.1.5b
 
 ////New Features\\\\
 
@@ -207,7 +207,8 @@ Remember that ALLFLAGS include ALL the flags listed.
 
 
 ////Changelog\\\\
-*- 07-05-2010 - Added the command !decon which allows you to revert and ban a deconner.
+*- 01-08-2010 - Added some more kill messages for suicide cases (with Lucifer Cannon, Flamer and Grenade), labeled as version 2.1.5b
+*- 07-05-2010 - Added the command !decon which allows you to revert and ban a deconner. Labeled as version 2.1.4b
 *- 06-05-2010 - Back to the work on the QVM, fixed some bugs on the !invisible command, also restricted the admins from being able to !kick a bot, updated to V2.1.3b
 *- 18-02-2010 - Fixed the !help bug and added colored Win message (that now shows a CP too), added an admin.dat example on the docs.
 *- <18-02-2010 - I don't have a changelog below this point, but its the most features of the QVM.
