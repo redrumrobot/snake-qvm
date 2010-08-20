@@ -207,6 +207,7 @@ Remember that ALLFLAGS include ALL the flags listed.
 
 
 ////Changelog\\\\
+*- 02-08-2010 - Fixed a bug in the !invisible command which allowed the players to send PMs and discover invisible admins.
 *- 01-08-2010 - Added some more kill messages for suicide cases (with Lucifer Cannon, Flamer and Grenade), labeled as version 2.1.5b
 *- 07-05-2010 - Added the command !decon which allows you to revert and ban a deconner. Labeled as version 2.1.4b
 *- 06-05-2010 - Back to the work on the QVM, fixed some bugs on the !invisible command, also restricted the admins from being able to !kick a bot, updated to V2.1.3b
