@@ -5977,11 +5977,11 @@ void G_PrivateMessage( gentity_t *ent )
         continue;
 
       // Ignore sending to invisible players
-      if( tmpent->client->sess.invisible == qtrue && !G_admin_permission( ent, "invisible" ) )
+      if( tmpent->client->sess.invisible == qtrue && !G_admin_permission( ent, "T" ) )
         continue;
 
       // Ignore sending to non-invisible-capable players while invisible
-      if( ent->client->sess.invisible == qtrue && !G_admin_permission( tmpent, "invisible" ) )
+      if( ent->client->sess.invisible == qtrue && !G_admin_permission( tmpent, "T" ) )
         continue;
 
       if( BG_ClientListTest( &tmpent->client->sess.ignoreList,

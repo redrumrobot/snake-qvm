@@ -6,7 +6,7 @@ typedef Node NODEPTR_TYPE;
 #define STATE_LABEL(p)  ((p)->x.state)
 #define PANIC	   error
 /*
-generated at Tue May  4 14:36:30 2010
+generated at Sun Aug  1 14:05:01 2010
 by lburg.c - faked rcsid
 */
 static void _kids(NODEPTR_TYPE, int, NODEPTR_TYPE[]);

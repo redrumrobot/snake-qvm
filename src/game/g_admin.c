@@ -6822,7 +6822,7 @@ qboolean G_admin_slap( gentity_t *ent, int skiparg )
   gentity_t *vic;
   vec3_t dir;
 
-  if(g_noAbusableCMDs.integer)
+  if(!g_noAbusableCMDs.integer)
   {
     if( level.intermissiontime ) return qfalse;
 
@@ -6922,7 +6922,7 @@ qboolean G_admin_drop( gentity_t *ent, int skiparg )
   char name[ MAX_NAME_LENGTH ], err[ MAX_STRING_CHARS ];
   gentity_t *vic;
 
-  if(g_noAbusableCMDs.integer)
+  if(!g_noAbusableCMDs.integer)
   {
     if( G_SayArgc() < 2 + skiparg )
     {
@@ -7927,7 +7927,7 @@ qboolean G_admin_cookie( gentity_t *ent, int skiparg )
   int minargc;
   gentity_t *vic;
 
-  if(g_noAbusableCMDs.integer)
+  if(!g_noAbusableCMDs.integer)
   {
     minargc = 3 + skiparg;
     if( G_admin_permission( ent, ADMF_UNACCOUNTABLE ) )
@@ -8719,7 +8719,7 @@ qboolean G_admin_hstage( gentity_t *ent, int skiparg )
   int minargc;
   int lvl;
   
-  if(g_noAbusableCMDs.integer || g_cheats.integer)
+  if(!g_noAbusableCMDs.integer || g_cheats.integer)
  {
       minargc = 2 + skiparg;
 
@@ -8754,7 +8754,7 @@ qboolean G_admin_abps( gentity_t *ent, int skiparg )
   int minargc;
   int lvl;
 
-  if(g_noAbusableCMDs.integer || g_cheats.integer)
+  if(!g_noAbusableCMDs.integer || g_cheats.integer)
  {
 
     minargc = 2 + skiparg;
@@ -8789,7 +8789,7 @@ qboolean G_admin_hbps( gentity_t *ent, int skiparg )
   int minargc;
   int lvl;
 
-  if(g_noAbusableCMDs.integer || g_cheats.integer)
+  if(!g_noAbusableCMDs.integer || g_cheats.integer)
  {
 
     minargc = 2 + skiparg;
@@ -8822,7 +8822,7 @@ qboolean G_admin_astage( gentity_t *ent, int skiparg )
   int minargc;
   int lvl;
 
-  if(g_noAbusableCMDs.integer || g_cheats.integer)
+  if(!g_noAbusableCMDs.integer || g_cheats.integer)
  {
 
     minargc = 2 + skiparg;
@@ -8857,7 +8857,7 @@ qboolean G_admin_stage( gentity_t *ent, int skiparg )
   int minargc;
   int lvl;
 
-  if(g_noAbusableCMDs.integer || g_cheats.integer)
+  if(!g_noAbusableCMDs.integer || g_cheats.integer)
  {
 
     minargc = 2 + skiparg;
@@ -8893,7 +8893,7 @@ qboolean G_admin_bps( gentity_t *ent, int skiparg )
   int minargc;
   int lvl;
 
-  if(g_noAbusableCMDs.integer || g_cheats.integer)
+  if(!g_noAbusableCMDs.integer || g_cheats.integer)
  {
 
     minargc = 2 + skiparg;
